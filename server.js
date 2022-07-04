@@ -5,7 +5,14 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "https://nearest-attraction.herokuapp.com/"
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
