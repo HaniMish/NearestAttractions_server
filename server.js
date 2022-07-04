@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000
 
-const whitelist = ["http://localhost:3000"]
+const whitelist = ["http://localhost:8081"]
 var corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
