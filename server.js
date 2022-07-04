@@ -2,8 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 3000
-
 const whitelist = ["http://localhost:8081"]
 var corsOptions = {
   origin: function (origin, callback) {
@@ -25,9 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to Nearest Attraction application." });
   });
-  app.listen(port, () => {
-    console.log(`Example app listening at Port: ${port}`)
-  })
+
 require("./app/routes/attraction.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
